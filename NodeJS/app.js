@@ -17,9 +17,14 @@ app.use(express.static(__dirname + '/public'));
 
 
 
-app.get('/index',(req,res)=>{
-    res.send("hello");
-})
+// app.get('/index',(req,res)=>{
+//     res.send("hello");
+// })
+
+// gọi Router
+
+const api_Router = require('./Router/Router')
+app.use('/',api_Router);
 
 // tạo cổng localhost 
 app.listen(3000,()=>{
