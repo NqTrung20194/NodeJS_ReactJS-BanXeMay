@@ -92,7 +92,45 @@ if(err){
   res.send({kq:1,data:data});
 }
 });
+});
 
+//xóa 1 danh mục
+router.post('/deleteone/:id',(req,res)=>{
+  var id, err,mess,flag=1;
+
+  // lấy dử liệu từ thanh param
+  id = req.params.id;
+
+  //kiểm tra dử liệu có tồn tại hay không
+  if(id.trim() ===''){
+    flag = 0;
+    err = 'Không có kết quả';
+  }
+  if(flag === 1){
+    // Tìm và xóa
+    categories_model.findByIdAndDelete({_id:id},(err,data)=>{
+      if(err){
+        res.send({kq:0,err:err});
+      }else{
+        res.send({kq:1,data:data});
+      }
+    });
+  }
+});
+
+// tìm thông tin chi tiết 1 danh mục
+router.get('/inforonecategories/:id',(req,res)=>{
+  // lấy thông tin từ param
+  var id = req.params.id;
+  // res.send(id);
+  categories_model
+  .find({_id : req.params.id},(err,data)=>{
+    if(err){
+      res.send({kq:0,err:err});
+    }else{
+      res.send({kq:1,data:data});
+    }
+  });
 });
 
 module.exports = router;
