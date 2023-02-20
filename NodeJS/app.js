@@ -27,6 +27,6 @@ const api_Router = require('./Router/Router')
 app.use('/',api_Router);
 
 // tạo cổng localhost 
-app.listen(3000,()=>{
+app.listen(3100,()=>{
     console.log('server đã sằn sàng');
 })
