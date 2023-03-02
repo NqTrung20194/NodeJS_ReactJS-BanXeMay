@@ -62,7 +62,7 @@ router.get('/',(req,res)=>{
 });
 
 //edit 1 danh mục
-router.get('/edit/:id',(req,res)=>{
+router.post('/edit/:id',(req,res)=>{
 var name, parents, content,id, status, listProduct, err='', flag = 1 ;
 
 // lấy dử liệu của from từ body
@@ -83,6 +83,7 @@ const obj_update = {
   'status' : status,
   'listProduct' : listProduct
 }
+// res.send(obj_update);
 
 // thự hiện update phần tử
 categories_model.updateMany({_id:id},obj_update,(err,data)=>{
@@ -119,9 +120,9 @@ router.post('/deleteone/:id',(req,res)=>{
 });
 
 // tìm thông tin chi tiết 1 danh mục
-router.get('/inforonecategories/:id',(req,res)=>{
+router.get('/detail/:id',(req,res)=>{
   // lấy thông tin từ param
-  var id = req.params.id;
+  // var id = req.params.id;
   // res.send(id);
   categories_model
   .find({_id : req.params.id},(err,data)=>{

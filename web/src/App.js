@@ -7,6 +7,7 @@ import AdminTemPlate from './Components/TemPlates/adminTemPlate';
 import PublicTemPlate from './Components/TemPlates/publicTemPlate';
 import HomePage from './Components/Pages/HomePage';
 import Categories from './Components/Pages/Admin/Categories';
+import DetailCategories from './Components/Pages/Admin/DetailCategories';
 export const history = createBrowserHistory()
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         {/* Sử dụng Template addmin */}
         <AdminTemPlate exact path = '/admin' Component={HomepageAdmin}/>
         <AdminTemPlate exact path = '/admin/categories' Component={Categories}/>
+        <AdminTemPlate exact path = '/admin/categories/:id' Component={DetailCategories}/>
 
         {/* Sử dụng Template public */}
         <PublicTemPlate exact path = '/' Component={HomePage} />

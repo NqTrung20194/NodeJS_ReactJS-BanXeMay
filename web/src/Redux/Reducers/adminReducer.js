@@ -1,7 +1,9 @@
 import React from "react";
 
 const stateDefault = {
-    categories : ''
+    categories : '',
+    detailCategories:'',
+    detailUpdate:''
 }
 
 export const adminReducer = (state = stateDefault,action)=>{
@@ -9,6 +11,26 @@ export const adminReducer = (state = stateDefault,action)=>{
 
         case 'CATEGORIES':{
             state.categories = action.data;
+            state.detailCategories ='';
+            return{...state};
+        }
+        case 'DETAIL_CATEGORIES':{
+            state.detailCategories = action.data;
+            // console.log(state.detailCategories);
+
+            return{...state};
+        }
+
+        case 'UPDATE_DETAIL_CATEGORIES':{
+            // state.detailUpdate = action.data;
+            console.log(action.data);
+
+            return{...state};
+        }
+        case 'DELETEONE_DETAIL':{
+            // state.detailUpdate = action.data;
+            console.log(action.data);
+
             return{...state};
         }
 

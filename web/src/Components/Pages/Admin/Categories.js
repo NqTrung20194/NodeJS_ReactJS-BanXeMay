@@ -1,51 +1,86 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { danhMucXe } from "../../../Redux/Actions/adminAction";
+
+import { danhMucXe, deleteOne } from "../../../Redux/Actions/adminAction";
 
 export default function Categories() {
   const { categories } = useSelector((rootReducer) => rootReducer.adminReducer);
   const dispatch = useDispatch();
-  console.log(categories);
+  // console.log(categories);
+
+  const deleteone = (id)=>{
+console.log(id)
+const action = deleteOne(id);
+dispatch(action);
+  }
+
+
   const renderCategories = () => {
-    let stt = 0;
+    
     let stt2 = 0;
     if (categories !== "") {
       return categories.map((danhMuc, index) => {
-        if (danhMuc.parents == "") {
+        if (danhMuc.parents =='') {
+          let stt = 0;
           stt++;
-          const numEndChilds = Number(danhMuc.childs.length) - 1;
-          console.log(danhMuc.childs.length);
-          console.log(danhMuc.childs[numEndChilds].name);
+          // const numEndChilds = Number(danhMuc.childs.length) - 1;
+          // console.log(danhMuc.childs.length);
+          // console.log(danhMuc.childs[numEndChilds].name);
           return (
             <tr className="row" key={index}>
               <td className="col-1">{stt}</td>
-              <td className="col-4">{danhMuc.name}</td>
+              {/* điều hướng tới trang detail từng danh mục */}
+              <td className="col-4">
+                <NavLink to={`categories/` + danhMuc._id}>
+                  {danhMuc.name}
+                </NavLink>
+              </td>
               <td className="col-4">
                 <ul className="row">
                   {danhMuc.childs != ""
                     ? danhMuc.childs.map((danhMuccon, index) => {
-                        let dm = danhMuccon.name;
+                        let dm = danhMuccon;
                         stt2++;
-                          return (
-                            <li key={index} className="row">
-                              <span className="col-1">{stt2}</span>
-                              <NavLink className="col-6" to={`/` + dm + `'`}>{dm} </NavLink>
+                        return (
+                          <li key={index} className="row">
+                            <span className="col-1">{stt2}</span>
 
-                              <button className=" m-2 btn btn-danger col-2">Delete</button>
+                            {/* điều hướng tới trang detail từng danh mục */}
+                            <NavLink
+                              className="col-6"
+                              to={`categories/` + dm._id}
+                            >
+                              {dm.name}{" "}
+                            </NavLink>
 
-                              <button className="btn btn-primary col-2  m-2">Edit</button>
-                              
-                            </li>
-                          );
+                            <button className=" m-2 btn btn-danger col-2 p-1" onClick={()=>{
+                  deleteone(dm._id)
+                }}>
+                              Delete
+                            </button>
+
+                            <button className="btn btn-primary col-2  m-2">
+                            <NavLink className="text-light" to={`categories/` + dm._id}>
+                              Edit
+                            </NavLink>
+                            </button>
+                          </li>
+                        );
                       })
                     : ""}
                 </ul>
               </td>
               <td className="col-3">
-                <button className="btn btn-primary">Edit</button>
+              <button className="btn btn-primary col-2  m-2">
+                            <NavLink className="text-light" to={`categories/` + danhMuc._id}>
+                              Edit
+                            </NavLink>
+                            </button>
 
-                <button className=" m-2 btn btn-danger">Delete</button>
+                <button className=" m-2 btn btn-danger" onClick={()=>{
+                  deleteone(danhMuc._id)
+                }}>Delete</button>
               </td>
             </tr>
           );
