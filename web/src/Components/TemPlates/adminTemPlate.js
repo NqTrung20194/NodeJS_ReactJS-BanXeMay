@@ -6,7 +6,7 @@ export default function AdminTemPlate(props) {
 
     let{Component,path} = props;
     
-
+console.log(path)
 
   return <Route exact path={path} render = {(propsRouter)=>{
     return <div>

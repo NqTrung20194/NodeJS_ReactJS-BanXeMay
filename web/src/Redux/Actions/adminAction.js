@@ -73,6 +73,25 @@ export const deleteOne = (id) => {
         type: "DELETEONE_DETAIL",
         data: result.data.data,
       });
+      history.push("/admin/categories");
+    } catch (err) {
+      console.log("err", err.response?.data);
+    }
+  };
+};
+
+export const addDanhMuc = (detail) => {
+  console.log(detail)
+  return async (dispatch) => {
+    try {
+      let result = await http.post(`/categories/add/`,detail);
+
+      // đưa dử liệu lên redux
+      dispatch({
+        type: "ADD_DETAIL",
+        data: result.data.data,
+      });
+      history.push("/admin/categories");
     } catch (err) {
       console.log("err", err.response?.data);
     }

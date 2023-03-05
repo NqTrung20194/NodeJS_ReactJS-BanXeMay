@@ -33,6 +33,12 @@ export const adminReducer = (state = stateDefault,action)=>{
 
             return{...state};
         }
+        case 'ADD_DETAIL':{
+            // state.detailUpdate = action.data;
+            console.log(action.data);
+
+            return{...state};
+        }
 
     default: return state;
     }

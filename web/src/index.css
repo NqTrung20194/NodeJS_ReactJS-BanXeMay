@@ -14,3 +14,8 @@ code {
 a{
   text-decoration: none!important
 }
+.add {
+  width: 150px!important;
+  margin-bottom: 5px;
+  color: #fff !important;
+}

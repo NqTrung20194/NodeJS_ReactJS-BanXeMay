@@ -95,6 +95,9 @@ dispatch(action);
   }, []);
   return (
     <div className="container">
+      <div className="row">
+        <NavLink className="btn btn-success add" to={'/admin/categories/add'}>Thêm</NavLink>
+      </div>
       <div className="row m-0">
         <table className="table ">
           <thead>
