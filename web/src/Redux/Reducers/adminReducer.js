@@ -28,7 +28,7 @@ export const adminReducer = (state = stateDefault,action)=>{
             return{...state};
         }
         case 'DELETEONE_DETAIL':{
-            // state.detailUpdate = action.data;
+            state.categories = action.data;
             console.log(action.data);
 
             return{...state};

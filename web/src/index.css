@@ -19,3 +19,14 @@ a{
   margin-bottom: 5px;
   color: #fff !important;
 }
+
+.theXe .card {
+  border: none;
+}
+
+.theXe .card-title {
+  color: red;
+}
+.theXe .card-text  {
+  color: #212121;
+}

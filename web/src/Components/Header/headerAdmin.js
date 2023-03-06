@@ -1,50 +1,8 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { danhMucXe } from "../../Redux/Actions/adminAction";
+
 export default function HeaderAdmin(props) {
-//   const { categories } = useSelector((rootReducer) => rootReducer.adminReducer);
-//   console.log(categories);
-//   const dispatch = useDispatch();
 
-//   const danhMucSanPham = () => {
-//     if (categories !== "") {
-//       return categories.map((danhMuc, index) => {
-//         if(danhMuc.childs.lenght !== 0){
-//           return(
-//               <div className=" dropright" key={index}>
-//     <button type="button" className="btn btn-light dropdown-toggle" data-toggle="dropdown">
-//     {danhMuc.name}
-// </button>
-
-//     <div className="dropdown-menu ">
-//   <a className="dropdown-item" href="#">Link 1</a>
-//   <a className="dropdown-item" href="#">Link 2</a>
-//   <a className="dropdown-item" href="#">Link 3</a>
-// </div>
-
-//   </div>
-
-//           )
-          
-
-//         }else{
-//           return (
-//             <a className="dropdown-item" key={index} href="#">
-//               {danhMuc.name}
-//             </a>
-//           );
-//         }
-        
-//       });
-//     }
-//   };
-
-//   // Lấy dử liệu lần đầu
-//   useEffect(() => {
-//     const action = danhMucXe();
-//     dispatch(action);
-//   }, []);
 
   return (
     <div className="row">
@@ -88,7 +46,7 @@ export default function HeaderAdmin(props) {
               </a>
               <div className="dropdown-menu bg-light" aria-labelledby="dropdownId">
               <NavLink className="dropdown-item bg-light text-dark" to={'/admin/categories'}>Categories</NavLink>
-              <NavLink className="dropdown-item bg-light text-dark" to={'/'}>Products</NavLink>
+              <NavLink className="dropdown-item bg-light text-dark" to={'/admin/products'}>Products</NavLink>
               <NavLink className="dropdown-item bg-light text-dark" to={'/'}>Users</NavLink>
               </div>
             </li>

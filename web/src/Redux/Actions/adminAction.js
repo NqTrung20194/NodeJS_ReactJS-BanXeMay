@@ -39,7 +39,6 @@ export const editDetail = (detail) => {
     try {
       let resultDetail = await http.get(`/categories/detail/` + detail.id);
       const rsDt = resultDetail.data.data[0];
-      let obj_update = {};
       if (detail.name === "") {
         detail = { ...detail, ["name"]: rsDt.name };
       }
@@ -66,12 +65,12 @@ export const editDetail = (detail) => {
 export const deleteOne = (id) => {
   return async (dispatch) => {
     try {
-      let result = await http.post(`/categories/deleteone/` + id);
-
+      let deleteDetail = await http.post(`/categories/deleteone/` + id);
+      let getCategories = await http.get("/categories");
       // đưa dử liệu lên redux
       dispatch({
         type: "DELETEONE_DETAIL",
-        data: result.data.data,
+        data: getCategories.data.data,
       });
       history.push("/admin/categories");
     } catch (err) {

@@ -11,6 +11,7 @@ export default function Categories() {
 
   const deleteone = (id)=>{
 console.log(id)
+// $(id).remove()
 const action = deleteOne(id);
 dispatch(action);
   }
@@ -28,7 +29,7 @@ dispatch(action);
           // console.log(danhMuc.childs.length);
           // console.log(danhMuc.childs[numEndChilds].name);
           return (
-            <tr className="row" key={index}>
+            <tr className="row" id={danhMuc._id} key={index}>
               <td className="col-1">{stt}</td>
               {/* điều hướng tới trang detail từng danh mục */}
               <td className="col-4">
@@ -43,7 +44,7 @@ dispatch(action);
                         let dm = danhMuccon;
                         stt2++;
                         return (
-                          <li key={index} className="row">
+                          <li key={index} id={dm._id} className="row">
                             <span className="col-1">{stt2}</span>
 
                             {/* điều hướng tới trang detail từng danh mục */}
@@ -78,7 +79,7 @@ dispatch(action);
                             </NavLink>
                             </button>
 
-                <button className=" m-2 btn btn-danger" onClick={()=>{
+                <button className=" m-2 btn btn-danger"  onClick={()=>{
                   deleteone(danhMuc._id)
                 }}>Delete</button>
               </td>

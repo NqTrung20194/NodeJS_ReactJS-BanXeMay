@@ -9,6 +9,8 @@ import HomePage from './Components/Pages/HomePage';
 import Categories from './Components/Pages/Admin/Categories';
 import DetailCategories from './Components/Pages/Admin/DetailCategories';
 import themCategories from './Components/Pages/Admin/themCategories';
+import mainProducts from './Components/Pages/Admin/Products/adminProducts';
+import adminProducts from './Components/Pages/Admin/Products/adminProducts';
 export const history = createBrowserHistory()
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
         <AdminTemPlate exact path = '/admin/categories' Component={Categories}/>
 
         <AdminTemPlate exact path = '/admin/categories/:id' Component={DetailCategories}/>
+
+        <AdminTemPlate exact path = '/admin/products' Component={adminProducts}/>
+
 
 
 
