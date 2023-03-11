@@ -9,6 +9,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 // Gọi database
 require('./database');
 
+//gọi multer
+var multer = require('multer');
+
 // mở api
 app.use((req, res, next)=>{
     // port dung voi sever goi url
