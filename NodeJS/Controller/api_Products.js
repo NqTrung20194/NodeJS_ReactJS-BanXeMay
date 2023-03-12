@@ -49,6 +49,7 @@ router.post('/add',(req,res)=>{
 
 router.use(cors());
 // cấu hình đường dẫn lưu ảnh
+var fileName ='';
 const storage = multer.diskStorage({
     // đường dẫn lưu file
     destination: (req, file, cb)=>{
@@ -62,7 +63,8 @@ const storage = multer.diskStorage({
 
     filename: (req, file, cb)=>{
         if(file.mimetype=='image/png'){
-            cb(null, Date.now()+'-'+file.originalname);
+            fileName = Date.now()+'-'+file.originalname;
+            cb(null, fileName);
         }
         else
         {
@@ -79,13 +81,14 @@ const upload = multer({ storage: storage,limits:limits }).single('img');
 
 router.post('/add/uploadimg', (req, res)=>{
     // const file = req.body.FormData;
-// console.log(file);
-// res.send({message: file});
+    
+
     upload(req, res, (err)=>{
         if(err){
             res.send({kq:0, err:err});
         }else{
-            res.send({kq:1, message: 'File úp thành công.'});
+            res.send({kq:1, message: 'File úp thành công.',data:fileName});
+            
         }
     });
 });

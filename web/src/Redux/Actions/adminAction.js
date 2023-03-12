@@ -96,3 +96,21 @@ export const addDanhMuc = (detail) => {
     }
   };
 };
+
+export const addImg = (formData) => {
+  // console.log(detail)
+  return async (dispatch) => {
+    try {
+      let result = await http.post(`/products/add/uploadimg`,formData);
+
+      // đưa dử liệu lên redux
+      dispatch({
+        type: "UPLOAD_IMG",
+        data: result.data.data,
+      });
+      // history.push("/admin/categories");
+    } catch (err) {
+      console.log("err", err.response?.data);
+    }
+  };
+};

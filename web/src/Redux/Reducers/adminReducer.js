@@ -3,7 +3,8 @@ import React from "react";
 const stateDefault = {
     categories : '',
     detailCategories:'',
-    detailUpdate:''
+    detailUpdate:'',
+    imgProductName:''
 }
 
 export const adminReducer = (state = stateDefault,action)=>{
@@ -37,6 +38,11 @@ export const adminReducer = (state = stateDefault,action)=>{
             // state.detailUpdate = action.data;
             console.log(action.data);
 
+            return{...state};
+        }
+        case 'UPLOAD_IMG':{
+            state.imgProductName = action.data;
+            // console.log(action.data);
             return{...state};
         }
 
