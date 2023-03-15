@@ -4,7 +4,8 @@ const stateDefault = {
     categories : '',
     detailCategories:'',
     detailUpdate:'',
-    imgProductName:''
+    imgProductName:'',
+    proDucts:''
 }
 
 export const adminReducer = (state = stateDefault,action)=>{
@@ -42,7 +43,12 @@ export const adminReducer = (state = stateDefault,action)=>{
         }
         case 'UPLOAD_IMG':{
             state.imgProductName = action.data;
-            // console.log(action.data);
+            console.log(state.imgProductName);
+            return{...state};
+        }
+        case 'ADD_PRODUCT':{
+            state.proDucts = action.data;
+            // console.log(state.proDucts);
             return{...state};
         }
 

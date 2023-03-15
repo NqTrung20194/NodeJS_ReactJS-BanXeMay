@@ -80,7 +80,7 @@ export const deleteOne = (id) => {
 };
 
 export const addDanhMuc = (detail) => {
-  console.log(detail)
+  // console.log(detail)
   return async (dispatch) => {
     try {
       let result = await http.post(`/categories/add/`,detail);
@@ -102,13 +102,32 @@ export const addImg = (formData) => {
   return async (dispatch) => {
     try {
       let result = await http.post(`/products/add/uploadimg`,formData);
-
+console.log(result.data)
       // đưa dử liệu lên redux
       dispatch({
         type: "UPLOAD_IMG",
         data: result.data.data,
       });
       // history.push("/admin/categories");
+    } catch (err) {
+      console.log("err", err.response?.data);
+    }
+  };
+};
+
+//add products
+export const addProducts = (products) => {
+  // console.log(detail)
+  return async (dispatch) => {
+    try {
+      let result = await http.post(`/products/add/`,products);
+
+      // đưa dử liệu lên redux
+      dispatch({
+        type: "ADD_PRODUCT",
+        data: result.data.data,
+      });
+      history.push("/admin/products");
     } catch (err) {
       console.log("err", err.response?.data);
     }

@@ -16,6 +16,10 @@ const schemaProduct = mongoose.Schema({
     parents : Array,
     content : String,
     sort : String,
+    img : {
+        type : Array,
+        require : true
+    },
     status : {
         type : Boolean,
         default : 0

@@ -50,10 +50,11 @@ router.post('/add',(req,res)=>{
 router.use(cors());
 // cấu hình đường dẫn lưu ảnh
 var fileName ='';
+var arrName ;
 const storage = multer.diskStorage({
     // đường dẫn lưu file
     destination: (req, file, cb)=>{
-        cb(null, 'public/Img_upload');
+        cb(null, 'public/../../web/public/Img_Upload');
     },
 
     // kiểm tra
@@ -62,8 +63,11 @@ const storage = multer.diskStorage({
     // 3. kiểm tra kích thước ảnh
 
     filename: (req, file, cb)=>{
-        if(file.mimetype=='image/png'){
+        
+        if(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"){
             fileName = Date.now()+'-'+file.originalname;
+            arrName.push({['name']:fileName});
+            
             cb(null, fileName);
         }
         else
@@ -77,24 +81,21 @@ const storage = multer.diskStorage({
 // 3. kiểm tra kích thước ảnh
 const limits = {filesize:1024*50};
 // gọi ra sử dụng, single: úp 1 tấm ảnh, array: nhiều tấm ảnh
-const upload = multer({ storage: storage,limits:limits }).single('img');
+const upload = multer({ storage: storage,limits:limits }).array('img');
 
 router.post('/add/uploadimg', (req, res)=>{
     // const file = req.body.FormData;
-    
+    arrName =[]
 
     upload(req, res, (err)=>{
+        
         if(err){
             res.send({kq:0, err:err});
         }else{
-            res.send({kq:1, message: 'File úp thành công.',data:fileName});
+            res.send({kq:1, message: 'File úp thành công.',data:arrName});
             
         }
     });
 });
-
-
-
-
 
 module.exports = router;
