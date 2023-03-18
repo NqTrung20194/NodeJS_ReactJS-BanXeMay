@@ -29,7 +29,8 @@ export default function AdminAddProduct(props) {
   }
 
   //gửi thông tin form
-  const submitForm =()=>{
+  const submitForm =(e)=>{
+    e.preventDefault();
     const action = addProducts(product);
     dispatch(action);
   }
@@ -47,12 +48,12 @@ export default function AdminAddProduct(props) {
             id="parents"
             onChange={handleChange}
           >
-            <option>
+            <option >
               Chọn
             </option>
             {categories.map((danhMucCha, index) => {
               // console.log(danhMucCha.name)
-              if(danhMucCha.parents ==''){
+              if(danhMucCha.parents !=''){
                 return (
                   <option key={index}>{danhMucCha.name}</option>
                );
@@ -100,8 +101,8 @@ export default function AdminAddProduct(props) {
   },[imgProductName])
   return (
     <div>
-      <form >
-  <div className="form-group" onSubmit={submitForm}>
+      <form onSubmit={submitForm} >
+  <div className="form-group" >
     <label htmlFor="name">Tên Sản Phẩm:</label>
     <input type="text" name = 'name' className="form-control" placeholder="Nhập Tên Sản Phẩm" id="name" onChange={handleChange} />
   </div>

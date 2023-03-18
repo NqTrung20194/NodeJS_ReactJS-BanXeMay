@@ -119,15 +119,16 @@ console.log(result.data)
 export const addProducts = (products) => {
   // console.log(detail)
   return async (dispatch) => {
+    // console.log('action:',products)
     try {
-      let result = await http.post(`/products/add/`,products);
+      let result = await http.post(`/products/add`,products);
 
       // đưa dử liệu lên redux
       dispatch({
         type: "ADD_PRODUCT",
         data: result.data.data,
       });
-      history.push("/admin/products");
+      // history.push("/admin/products");
     } catch (err) {
       console.log("err", err.response?.data);
     }

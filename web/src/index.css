@@ -12,7 +12,9 @@ code {
     monospace;
 }
 a{
-  text-decoration: none!important
+  text-decoration: none!important;
+  color: black!important;
+  
 }
 .add {
   width: 150px!important;
@@ -29,4 +31,7 @@ a{
 }
 .theXe .card-text  {
   color: #212121;
+}
+.navbar{
+  flex-direction: row!important;
 }

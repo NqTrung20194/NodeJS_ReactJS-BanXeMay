@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addDanhMuc } from "../../../Redux/Actions/adminAction";
 
-export default function themCategories(props) {
+export default function ThemCategories(props) {
   const { categories } = useSelector((rootReducer) => rootReducer.adminReducer);
 //   console.log(categories);
   const dispatch = useDispatch();

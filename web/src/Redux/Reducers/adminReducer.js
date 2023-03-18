@@ -48,7 +48,7 @@ export const adminReducer = (state = stateDefault,action)=>{
         }
         case 'ADD_PRODUCT':{
             state.proDucts = action.data;
-            // console.log(state.proDucts);
+            console.log(state.proDucts);
             return{...state};
         }
 

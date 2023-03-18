@@ -8,8 +8,8 @@ import PublicTemPlate from './Components/TemPlates/publicTemPlate';
 import HomePage from './Components/Pages/HomePage';
 import Categories from './Components/Pages/Admin/Categories';
 import DetailCategories from './Components/Pages/Admin/DetailCategories';
-import themCategories from './Components/Pages/Admin/themCategories';
-import adminProducts from './Components/Pages/Admin/Products/adminProducts';
+import ThemCategories from './Components/Pages/Admin/themCategories';
+import AdminProducts from './Components/Pages/Admin/Products/adminProducts';
 import AdminAddProduct from './Components/Pages/Admin/Products/adminAddProduct';
 export const history = createBrowserHistory()
 function App() {
@@ -19,13 +19,13 @@ function App() {
       <Switch>
         {/* Sử dụng Template addmin */}
         <AdminTemPlate exact path = '/admin' Component={HomepageAdmin}/>
-        <AdminTemPlate exact path = '/admin/categories/add' Component={themCategories}/>
+        <AdminTemPlate exact path = '/admin/categories/add' Component={ThemCategories}/>
 
         <AdminTemPlate exact path = '/admin/categories' Component={Categories}/>
 
         <AdminTemPlate exact path = '/admin/categories/:id' Component={DetailCategories}/>
 
-        <AdminTemPlate exact path = '/admin/products' Component={adminProducts}/>
+        <AdminTemPlate exact path = '/admin/products' Component={AdminProducts}/>
         <AdminTemPlate exact path = '/admin/products/add' Component={AdminAddProduct}/>
 
 

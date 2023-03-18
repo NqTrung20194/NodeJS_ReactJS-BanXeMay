@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { danhMucXe } from "../../../../Redux/Actions/adminAction";
 
-export default function adminProducts() {
+export default function AdminProducts() {
 
   const {categories} = useSelector((rootReducer) => rootReducer.adminReducer);
 console.log(categories)
