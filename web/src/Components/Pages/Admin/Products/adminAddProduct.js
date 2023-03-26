@@ -100,7 +100,7 @@ export default function AdminAddProduct(props) {
     dispatch(action);
   },[imgProductName])
   return (
-    <div>
+    <div className="container">
       <form onSubmit={submitForm} >
   <div className="form-group" >
     <label htmlFor="name">Tên Sản Phẩm:</label>

@@ -43,13 +43,13 @@ router.post('/add',(req,res)=>{
         err ='Không được thiếu hình ảnh';
         flag = 0;
     }
-    if(flag===1){
-        Categories_model.find({name:parents},(err,data)=>{
+    if(flag === 1){
+        Categories_model.find({name:parents},(err,dataCategories)=>{
             if(err){
                 res.send({kq:0,err:err});
             }else{
-                id_Parents.push(data[0]._id);
-
+                id_Parents.push(dataCategories[0]._id);
+                //tạo phần tử product
                 obj_add = {
                     name :name,
                     parents :id_Parents,
@@ -57,12 +57,19 @@ router.post('/add',(req,res)=>{
                     price:price,
                     img:img
                 }
+                // Đẩy product lên server
             Products_model.create(obj_add,(err,data)=>{
                 if (err) {
                     res.send({ kq: 0, err: err });
                   } else {
-                    
-                    res.send({ kq: 1, data: data });
+                    // thêm tên sản phẩm vào listproducts của danh mục
+                    Categories_model.updateMany({_id : id_Parents},{$addToSet: {"listProduct" : {['id']:data._id, ['name']:data.name}}},(err,dataSuccess)=>{
+                        if(err){
+                            res.send({kq:0,err:err});
+                          }else{
+                            res.send({ kq: 1, data: data });
+                          }
+                    })
                   }
             })          
             }
@@ -73,6 +80,7 @@ router.post('/add',(req,res)=>{
    
 });
 
+// upload hình ành lên server
 router.use(cors());
 // cấu hình đường dẫn lưu ảnh
 var fileName ='';
@@ -123,5 +131,15 @@ router.post('/add/uploadimg', (req, res)=>{
         }
     });
 });
+
+router.get('/',(req,res)=>{
+    Products_model.find((err,data)=>{
+        if(err){
+            res.send({kq:0,err:err});
+          }else{
+            res.send({kq:1,data:data});
+          }
+    })
+})
 
 module.exports = router;
