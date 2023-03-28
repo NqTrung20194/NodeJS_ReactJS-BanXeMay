@@ -5,7 +5,8 @@ const stateDefault = {
     detailCategories:'',
     detailUpdate:'',
     imgProductName:'',
-    proDucts:''
+    proDucts:'',
+    dSSP:''
 }
 
 export const adminReducer = (state = stateDefault,action)=>{
@@ -24,31 +25,36 @@ export const adminReducer = (state = stateDefault,action)=>{
         }
 
         case 'UPDATE_DETAIL_CATEGORIES':{
-            // state.detailUpdate = action.data;
-            console.log(action.data);
+            state.detailUpdate = action.data;
+            // console.log(action.data);
 
             return{...state};
         }
         case 'DELETEONE_DETAIL':{
-            state.categories = action.data;
-            console.log(action.data);
+            // state.categories = action.data;
+            // console.log(action.data);
 
             return{...state};
         }
         case 'ADD_DETAIL':{
             // state.detailUpdate = action.data;
-            console.log(action.data);
+            // console.log(action.data);
 
             return{...state};
         }
         case 'UPLOAD_IMG':{
             state.imgProductName = action.data;
-            console.log(state.imgProductName);
+            // console.log(state.imgProductName);
             return{...state};
         }
         case 'ADD_PRODUCT':{
             state.proDucts = action.data;
-            console.log(state.proDucts);
+            // console.log(state.proDucts);
+            return{...state};
+        }
+        case 'GET_PRODUCT':{
+            state.dSSP = action.data;
+            // console.log(state.dSSP);
             return{...state};
         }
 

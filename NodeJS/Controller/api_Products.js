@@ -75,9 +75,6 @@ router.post('/add',(req,res)=>{
             }
         })
     }
-
-
-   
 });
 
 // upload hình ành lên server

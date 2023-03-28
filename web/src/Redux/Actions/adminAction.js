@@ -128,7 +128,25 @@ export const addProducts = (products) => {
         type: "ADD_PRODUCT",
         data: result.data.data,
       });
-      // history.push("/admin/products");
+      history.push("/admin/products");
+    } catch (err) {
+      console.log("err", err.response?.data);
+    }
+  };
+};
+
+//lấy danh sách products
+export const getProducts = () => {
+  
+  return async (dispatch) => {
+    try {
+      let result = await http.get(`/products`);
+
+      // đưa dử liệu lên redux
+      dispatch({
+        type: "GET_PRODUCT",
+        data: result.data.data,
+      });
     } catch (err) {
       console.log("err", err.response?.data);
     }
