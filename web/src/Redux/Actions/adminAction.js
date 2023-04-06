@@ -141,7 +141,7 @@ export const getProducts = () => {
   return async (dispatch) => {
     try {
       let result = await http.get(`/products`);
-
+console.log(result.data);
       // đưa dử liệu lên redux
       dispatch({
         type: "GET_PRODUCT",

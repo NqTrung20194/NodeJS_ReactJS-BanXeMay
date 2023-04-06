@@ -8,8 +8,8 @@ export default function AdminProducts() {
   const { categories, dSSP } = useSelector(
     (rootReducer) => rootReducer.adminReducer
   );
-  console.log(categories);
-  console.log(dSSP);
+  // console.log(categories);
+  // console.log(dSSP);
   const dispatch = useDispatch();
   const loaiXe = () => {
     if (categories) {
@@ -33,8 +33,8 @@ export default function AdminProducts() {
                             {sttDanhMucCon}. <span>{danhMucCon.name}</span>
                           </h5>
                         </div>
-
-                        <div className="col-12">
+                          {danhMucCon.listProduct!='' ?
+                          <div className="col-12">
                           <table className="table">
                             <thead>
                               <tr>
@@ -67,6 +67,8 @@ export default function AdminProducts() {
                             </tbody>
                           </table>
                         </div>
+                          :console.log('Không có sản phẩm')}
+                        
                       </div>
                     );
                   })

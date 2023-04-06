@@ -62,8 +62,9 @@ router.post('/add',(req,res)=>{
                 if (err) {
                     res.send({ kq: 0, err: err });
                   } else {
+                    console.log(dataCategories[0]._id,data._id,data.name);
                     // thêm tên sản phẩm vào listproducts của danh mục
-                    Categories_model.updateMany({_id : id_Parents},{$addToSet: {"listProduct" : {['id']:data._id, ['name']:data.name}}},(err,dataSuccess)=>{
+                    Categories_model.updateMany({_id : dataCategories[0]._id},{$addToSet: {"listProduct" : {['id']:data._id, ['name']:data.name}}},(err,dataSuccess)=>{
                         if(err){
                             res.send({kq:0,err:err});
                           }else{

@@ -21,10 +21,11 @@ dispatch(action);
     
     let stt2 = 0;
     if (categories !== "") {
+      let stt = 0;
+          
       return categories.map((danhMuc, index) => {
-        if (danhMuc.parents =='') {
-          let stt = 0;
-          stt++;
+        stt++;
+        if (danhMuc.parents =='') {          
           // const numEndChilds = Number(danhMuc.childs.length) - 1;
           // console.log(danhMuc.childs.length);
           // console.log(danhMuc.childs[numEndChilds].name);
