@@ -14,6 +14,14 @@ const schemaProduct = mongoose.Schema({
         default:0
     },
     parents : Array,
+    coCauTreo: {
+        type : Boolean,
+        default : 0
+    },
+    dongXe: {
+        type : Boolean,
+        default : 0
+    },
     content : String,
     sort : String,
     img : {

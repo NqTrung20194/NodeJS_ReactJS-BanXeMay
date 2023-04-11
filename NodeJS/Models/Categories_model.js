@@ -9,6 +9,10 @@ const schemaCategory = mongoose.Schema({
         require : true,
         unique:true
     },
+    type: {
+        type : Boolean,
+        default : 0
+    },
     parents : Array,
     listProduct : Array,
     content : String,

@@ -45,6 +45,9 @@ export const editDetail = (detail) => {
       if (detail.parents === "") {
         detail = { ...detail, ["parents"]: rsDt.parents[0] };
       }
+      if (detail.type === "") {
+        detail = { ...detail, ["type"]: rsDt.type };
+      }
 
       // console.log(detail)
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addDanhMuc } from "../../../Redux/Actions/adminAction";
+import { addDanhMuc, danhMucXe } from "../../../Redux/Actions/adminAction";
 
 export default function ThemCategories(props) {
   const { categories } = useSelector((rootReducer) => rootReducer.adminReducer);
@@ -10,11 +10,12 @@ export default function ThemCategories(props) {
     ["name"]: "",
     ["content"]: "",
     ["parents"]: "",
+    ["type"]: 0,
   });
   const danhMucCha = () => {
     if (categories != "") {
       // kiểm tra dử liệu
-      // console.log(categories);
+      console.log(detail);
       return (
         <div>
           <select
@@ -56,6 +57,11 @@ export default function ThemCategories(props) {
     }
   };
 
+  useEffect(() => {
+    const action = danhMucXe();
+    dispatch(action);
+  }, []);
+
   return (
     <div>
       <form className="container" method="get" onSubmit={handleSubmit}>
@@ -69,15 +75,17 @@ export default function ThemCategories(props) {
           onChange={handlechange}
         />
 
-        <label>Tên Danh Mục Sản Phẩm </label>
-        <input
-          type="text"
-          name="listProduct"
-          id="listProduct"
-          className="form-control"
-          placeholder="Tên danh mục"
-          onChange={handlechange}
-        />
+        <label>Loại Xe: </label>
+        <select
+        className="form-control"
+        name="type"
+        id="type"
+        onChange={handlechange}
+        >
+          <option>Chọn</option>
+          <option value={'0'} >Xe 2 Bánh</option>
+          <option value={'1'} >Xe 4 Bánh</option>
+        </select>
 
         <label>Nội Dung</label>
         <textarea

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { chiTietdanhMucXe, editDetail } from "../../../Redux/Actions/adminAction";
+import { chiTietdanhMucXe, danhMucXe, editDetail } from "../../../Redux/Actions/adminAction";
 
 export default function DetailCategories(props) {
   
@@ -9,8 +9,8 @@ export default function DetailCategories(props) {
   const dispatch = useDispatch();
   const id = props.match.params.id;
     // console.log(detailCategories.parents[0]);
-  let [detail, setDetail] = useState({['id']:id,['name']:'',['content']:'',['parents']:''});
-  // console.log('detail', detail);
+  let [detail, setDetail] = useState({['id']:id,['name']:'',['content']:'',['parents']:'',['type']:''});
+  console.log('detail', detail);
 
   
   const danhMucCha = () => {
@@ -28,6 +28,7 @@ export default function DetailCategories(props) {
           ><option >
           {detailCategories.parents}
         </option>
+        
             {categories.map((danhMucCha, index) => {
               // console.log(danhMucCha.name)
               if (danhMucCha.name != detailCategories.parents) {
@@ -37,6 +38,30 @@ export default function DetailCategories(props) {
                 );
               } 
             })}
+          </select>
+        </div>
+      );
+    }
+  };
+
+  const loaiXe = () => {
+   
+    if (detailCategories != "") {
+      // kiểm tra dử liệu
+      // console.log(categories);
+      return (
+        <div>
+          <select
+            className="form-control"
+            name="type"
+            id="type"
+            onChange={handlechange}
+          ><option >
+          {detailCategories.type == true ?'Xe 4 Bánh':'Xe 2 Bánh'}
+        </option>
+        <option value={false}>Xe 2 Bánh</option>
+        <option value={true}>Xe 4 Bánh</option>
+            
           </select>
         </div>
       );
@@ -72,6 +97,8 @@ export default function DetailCategories(props) {
   
 
   useEffect(() => {
+    const action1 = danhMucXe();
+    dispatch(action1);
   
     const action = chiTietdanhMucXe(id);
     dispatch(action);
@@ -101,6 +128,10 @@ export default function DetailCategories(props) {
         defaultValue={detailCategories.content}
       ></textarea>
       <label />
+      <small id="type" className="text-muted">
+        Loai Xe
+      </small>
+      <div className="form-group">{loaiXe()}</div>
 
       <small id="helpId" className="text-muted">
         Danh Mục Cha

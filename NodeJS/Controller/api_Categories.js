@@ -9,7 +9,7 @@ router.post("/add", (req, res) => {
     parents,
     content,
     listProduct,
-    sort,
+    type,
     err,
     flag = 1;
   // lấy dử liệu
@@ -17,6 +17,7 @@ router.post("/add", (req, res) => {
   parents = req.body.parents;
   content = req.body.content;
   listProduct = req.body.listProduct;
+  type = req.body.type;
 
   // kiểm tra dử liệu
   if (name.trim(" ") === "") {
@@ -71,6 +72,7 @@ parents = req.body.parents;
 content = req.body.content;
 status = req.body.status;
 listProduct = req.body.listProduct;
+type = req.body.type;
 
 // lấy id của phẩn tử cần update từ thanh param
 id = req.params.id;
@@ -81,7 +83,8 @@ const obj_update = {
   'parents' : parents,
   'content' : content,
   'status' : status,
-  'listProduct' : listProduct
+  'listProduct' : listProduct,
+  'type' : type,
 }
 // res.send(obj_update);
 
